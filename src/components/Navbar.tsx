@@ -1,8 +1,9 @@
-"use client";
+
 
 // import { Button } from "@heroui/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import NavLinks from "./NavLinks";
 
 export default function Navbar() {
   const [date, setDate] = useState("");
@@ -117,7 +118,7 @@ export default function Navbar() {
             
         </div>
 
-        
+        <NavLinks/>
         
     </nav>
     
