@@ -1,10 +1,13 @@
+import Marquee from '@/components/Marquee';
 import Navbar from '@/components/Navbar';
 import React from 'react';
 
 const HomePage = () => {
   return (
-     
-      <Navbar/>
+     <div>
+         <Navbar/>
+        <Marquee/>
+     </div>
      
   );
 };
