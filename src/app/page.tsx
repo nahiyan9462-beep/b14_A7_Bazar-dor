@@ -1,6 +1,7 @@
 import Banner from '@/components/Banner';
 import Marquee from '@/components/Marquee';
 import Navbar from '@/components/Navbar';
+import Products from '@/components/Products';
 import React from 'react';
 
 const HomePage = () => {
@@ -9,6 +10,7 @@ const HomePage = () => {
          <Navbar/>
         <Marquee/>
         <Banner/>
+        <Products/>
      </div>
      
   );
