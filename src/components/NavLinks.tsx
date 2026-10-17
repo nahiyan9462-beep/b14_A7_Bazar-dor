@@ -23,7 +23,7 @@ const NavLinks = async() => {
         {categories.map((category:ICategory,index:number) => (
           <Link
             key={category.id}
-            href={`/categories/${category.slug}`}
+            href={`/category/${category.slug}`}
             className={`flex shrink-0 items-baseline gap-2 border-b-2 px-3 py-4 text-sm font-medium transition-colors sm:px-4 sm:text-base ${
               index === 0
                 ? "border-green-600 text-green-700"
