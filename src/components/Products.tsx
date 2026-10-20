@@ -52,7 +52,7 @@ const ProductsPage = async () => {
     .slice(0, 6);
 
   return (
-    <main className="mx-auto w-full max-w-7xl space-y-10 px-4 py-8 sm:px-6 lg:px-8">
+    <main className="container mx-auto space-y-10 px-4 py-8 sm:px-6 lg:px-8">
       {/* Prices increased */}
       <section>
         <h2 className="mb-5 text-xl font-bold text-slate-900 sm:text-2xl">

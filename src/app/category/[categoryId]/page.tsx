@@ -1,50 +1,43 @@
+import CategoryProducts from "@/components/CategoryProductCard";
+import type { IProducts } from "@/types/products";
 
-import ProductCard from "@/components/ProductCard";
-import React from "react";
 
-interface CategoryPageProps {
-  params: Promise<{
-    categoryId: string;
-  }>;
-}
 
-const CategoryPage = async ({ params }: CategoryPageProps) => {
+const CategoryPage = async ({
+  params,
+}: {
+  params: Promise<{ categoryId: string }>;
+}) => {
   const { categoryId } = await params;
 
   const res = await fetch(
-    `https://openapi.programming-hero.com/api/bazardor/categories/${categoryId}`,
+    `https://openapi.programming-hero.com/api/bazardor/products?category=${encodeURIComponent(categoryId)}`,
     {
-      next: {
-        revalidate: 3600,
-      },
+      next: { revalidate: 3600 },
     }
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch category data");
+    throw new Error("Failed to fetch category products");
   }
 
   const data = await res.json();
 
-  // Check the API response structure
-  const categoryProduct = data.data;
+  // Extract the product array from the API response.
+  const products: IProducts[] = Array.isArray(data)
+    ? data
+    : Array.isArray(data.data)
+      ? data.data
+      : [];
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="mb-6 text-2xl font-bold">
-        {data.nameBn ?? data.data?.nameBn ?? "Category Products"}
-      </h2>
+    <main className="container mx-auto px-4 py-8">
+      <h1 className="mb-6 text-2xl font-bold text-gray-900">
+        {products[0]?.categoryNameBn ?? "ক্যাটাগরির পণ্য"}
+      </h1>
 
-      {Array.isArray(categoryProduct) && categoryProduct.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categoryProduct.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      ) : (
-        <p className="min-h-screen flex items-center justify-center">No products found in this category.</p>
-      )}
-    </div>
+      <CategoryProducts products={products} />
+    </main>
   );
 };
 

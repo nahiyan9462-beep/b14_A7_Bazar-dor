@@ -12,29 +12,26 @@ const NavLinks = async() => {
   })
   const data=await res.json()
 
-  const categories = data 
-  console.log(categories);
+  const categoryLinks = data 
+ 
   return (
           <nav
       aria-label="Product categories"
-      className="w-full border-b border-gray-200 bg-white"
+      className="w-full border-b shadow-sm border-gray-200 bg-white"
     >
-      <div className="mx-auto flex max-w-7xl items-baseline gap-2 overflow-x-auto px-4 sm:gap-4 sm:px-6 lg:justify-baseline lg:px-8">
-        {categories.map((category:ICategory,index:number) => (
+      <div className="container mx-auto flex items-baseline gap-2 overflow-x-auto px-4 sm:gap-4 sm:px-6 lg:justify-baseline lg:px-8">
+        {categoryLinks.map((links:ICategory,index:number) => (
           <Link
-            key={category.id}
-            href={`/category/${category.slug}`}
-            className={`flex shrink-0 items-baseline gap-2 border-b-2 px-3 py-4 text-sm font-medium transition-colors sm:px-4 sm:text-base ${
-              index === 0
-                ? "border-green-600 text-green-700"
-                : "border-transparent text-gray-600 hover:border-green-500 hover:text-green-700"
-            }`}
+            key={links.id}
+            href={`/category/${links.slug}`}
+            className={`flex gap-2 py-4 text-sm font-medium transition-colors`}
+            
           >
             <span aria-hidden="true" className="text-lg">
-              {category.icon}
+              {links.icon}
             </span>
 
-            <span>{category.nameBn}</span>
+            <span>{links.nameBn}</span>
           </Link>
         ))}
       </div>

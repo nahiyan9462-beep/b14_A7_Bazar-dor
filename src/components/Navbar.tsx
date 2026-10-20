@@ -7,7 +7,7 @@ import DateTime from "./DateTime";
 
 export default function Navbar() {
   return (
-    <nav className="shadow-sm">
+    <nav className="shadow-md sticky top-0 z-50">
         <div className="container mx-auto mt-5 p-4 flex items-center justify-between">
             <Link
             href="/"
