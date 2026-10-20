@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import { IProducts } from "@/types/products";
+import Link from "next/link";
+
 
 type Product = React.ComponentProps<typeof ProductCard>["product"];
 
@@ -99,7 +101,7 @@ export default function CategoryProducts({
           </select>
         </div>
       </div>
-
+  
       {/* Product grid */}
       {sortedProducts.length > 0 ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -114,6 +116,7 @@ export default function CategoryProducts({
             />
           ))}
         </div>
+      
       ) : (
         <div className="flex min-h-64 items-center justify-center rounded-xl border border-dashed border-gray-300">
           <p className="text-gray-500">

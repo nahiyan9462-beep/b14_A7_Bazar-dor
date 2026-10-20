@@ -1,6 +1,7 @@
 
 
 import type { IProducts } from "@/types/products";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: IProducts;
@@ -42,6 +43,11 @@ export default function ProductCard({ product }: ProductCardProps) {
       : "bg-slate-100";
 
   return (
+    <Link
+      href={`/products/${product.id}`}
+      className="block h-full rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-700"
+      aria-label={`${product.nameBn} এর বিস্তারিত দেখুন`}
+    >
     <article className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md sm:p-5">
       {/* Product information */}
       <div className="flex items-center gap-3">
@@ -105,5 +111,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         </span>
       </div>
     </article>
+    </Link> 
   );
 }

@@ -1,3 +1,12 @@
+
+export interface IMarket {
+  market: string;
+  division: string;
+  min: number;
+  max: number;
+}
+
+
 export interface IProducts{
      id: number,
     slug: string,
@@ -14,5 +23,6 @@ export interface IProducts{
     change: {
       dir: string,
       pct: number
-    }
+    },
+    markets: IMarket[];
 }

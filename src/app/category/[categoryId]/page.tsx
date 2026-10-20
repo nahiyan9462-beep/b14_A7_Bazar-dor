@@ -3,6 +3,7 @@ import type { IProducts } from "@/types/products";
 
 
 
+
 const CategoryPage = async ({
   params,
 }: {
@@ -35,7 +36,7 @@ const CategoryPage = async ({
       <h1 className="mb-6 text-2xl font-bold text-gray-900">
         {products[0]?.categoryNameBn ?? "ক্যাটাগরির পণ্য"}
       </h1>
-
+      
       <CategoryProducts products={products} />
     </main>
   );
