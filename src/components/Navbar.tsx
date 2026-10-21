@@ -82,7 +82,7 @@ export default function Navbar() {
                 
                 <Link
                     href="/signup"
-                    className="whitespace-nowrap rounded-xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-green-700 hover:shadow-md active:scale-95 sm:px-6 sm:text-base"
+                    className="whitespace-nowrap rounded-xl bg-green-800 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-green-700 hover:shadow-md active:scale-95 sm:px-6 sm:text-base"
                 >
                     সাইন আপ
                 </Link>

@@ -1,6 +1,7 @@
 
 
 import type { IProducts } from "@/types/products";
+import Image from "next/image";
 import Link from "next/link";
 
 interface ProductCardProps {
@@ -60,11 +61,6 @@ export default function ProductCard({ product }: ProductCardProps) {
               height={48}
               className="size-full object-contain p-1.5"
             />
-          ) : (
-            <span className="text-2xl" aria-hidden="true">
-              {product.categoryIcon || "🛒"}
-            </span>
-          )}
         </div> */}
 
         <div className="min-w-0 flex-1">
