@@ -4,6 +4,7 @@
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import DateTime from "./DateTime";
+import UserInfo from "./UserInfo";
 
 export default function Navbar() {
   return (
@@ -70,23 +71,10 @@ export default function Navbar() {
                 <DateTime/>
              
             </Link>
-            <div className="flex items-center gap-4 sm:gap-6">
-   
-                <Link
-                    href="/sign-In"
-                    className="whitespace-nowrap text-sm font-semibold text-gray-700 transition-colors duration-200 hover:text-green-700 sm:text-base"
-                >
-                    সাইন ইন
-                </Link>
-
-                
-                <Link
-                    href="/sign-up"
-                    className="whitespace-nowrap rounded-xl bg-green-800 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-green-700 hover:shadow-md active:scale-95 sm:px-6 sm:text-base"
-                >
-                    সাইন আপ
-                </Link>
-                </div>
+            {/* <div className="flex items-center gap-4 sm:gap-6"> */}
+                <UserInfo/>
+                 
+            {/* </div> */}
             
         </div>
          <NavLinks/>

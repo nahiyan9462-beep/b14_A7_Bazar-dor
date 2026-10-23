@@ -1,7 +1,8 @@
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-green-900 text-white">
+    <footer className="w-full shadow-md text-slate-500
+    ">
       <div className=" container mx-auto flex flex-col items-start justify-between gap-4 px-6 py-6 sm:flex-row sm:items-end sm:justify-between sm:px-8">
 
     
