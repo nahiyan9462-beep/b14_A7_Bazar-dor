@@ -20,8 +20,8 @@ import { authClient } from "@/lib/auth-client";
 import {Icon} from "@iconify/react";
 
 export default function SignInPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [toast, setToast] = useState<{
+  const [isLoading,setIsLoading] = useState(false)
+   const [toast, setToast] = useState<{
     visible: boolean;
     message: string;
     type: "success" | "error";
@@ -71,21 +71,27 @@ export default function SignInPage() {
            return;
          }
    
-       setIsLoading(true);
   };
 
     const handleGoogleSignIn = async()=>{
               const resData = await authClient.signIn.social({
               provider: "google",
             });
-            console.log('Google sign In',resData)
+            if(resData){
+              showToast("you've Log In successfully!")
+              redirect('/');
+            }
     }
 
     const handleGithubSignIn = async()=>{
         const resData = await authClient.signIn.social({
               provider: "github"
         });
-        console.log('signIn with GitHub',resData)
+         if(resData){
+              showToast("you've Log In successfully!")
+              redirect('/');
+        }
+        setIsLoading(true);
     }
       
   return (

@@ -18,25 +18,35 @@ const UserInfo = () => {
         return <span>Loading...<Spinner color="current" /></span>
     }
     console.log(session)
+    
 
     return (
         <main>
 
             {
                 user? <div className='flex items-center gap-1 p-5'>
+                   <Link href='/profile'>
                     <Avatar>
                     <Avatar.Image alt="user-img" src={user?.image as string} />
                     </Avatar>
+                    </Link>
                     <h2>{user?.name}</h2>
-                    <button onClick={() => setIsOpen(!isOpen)}>
-                        <Icon icon='mdi:chevron-down' width={18}
-                        height={18} className={`text-red-700 transition-transform ${
+                    <button  onClick={() => setIsOpen(!isOpen)}
+                    className="flex items-center gap-2 rounded-lg px-3 py-2"
+                    >
+                    <Icon
+                    icon="mdi:chevron-down"
+                    width={18}
+                    height={18}
+                    className={`text-red-700 transition-transform ${
                         isOpen ? "rotate-180" : ""
-                        }`}></Icon>
+                    }`}
+                    />
                     </button>
                     {isOpen && (
                         <Logout/>
-                    )}
+                )}
+                    
 
                 </div> : <div className='flex items-center gap-4 sm:gap-6'>
             <Link

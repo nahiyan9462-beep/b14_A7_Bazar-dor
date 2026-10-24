@@ -2,9 +2,13 @@
 
 import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
+import { Icon } from "@iconify/react";
+ 
 export function Logout() {
-    const handleSignOUt=async()=>{
+ 
+    const  handleSignOut=async()=>{
             await authClient.signOut();
+            
         }
     
   const logOUt = [
@@ -21,7 +25,7 @@ export function Logout() {
     },
   ] as const;
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-col gap-2">
       {logOUt.map(({actions, body, classNames, header, status, trigger}) => (
         <AlertDialog key={status}>
           <Button className={classNames}>{trigger}</Button>
@@ -40,8 +44,8 @@ export function Logout() {
                   <Button slot="close" variant="tertiary">
                     {actions.cancel}
                   </Button>
-                  <Button onClick={handleSignOUt} slot="close" variant={status === "danger" ? "danger" : "primary"}>
-                    {actions.confirm}
+                  <Button onClick={handleSignOut} slot="close" variant={status === "danger" ? "danger" : "primary"}>
+                    <Icon icon="lucide:log-out" width={18} height={18} />{actions.confirm}
                   </Button>
                 </AlertDialog.Footer>
               </AlertDialog.Dialog>
