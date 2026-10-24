@@ -1,31 +1,23 @@
-import ProductDetails from "@/components/ProductDetails";
-import { IProducts } from "@/types/products";
-import { notFound } from "next/navigation";
 
-
+import { Suspense } from "react";
+import ProductDetailContent from "./ProductContent";
 
 interface PageProps {
   params: Promise<{ productId: string }>;
 }
 
-export default async function ProductDetailPage({
-  params,
-}: PageProps) {
-    const { productId } = await params;
-    const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products/${productId}`,
-        {
-      next: { revalidate: 3600 },
-    }
-    );
-    const data = await res.json();
-     const product: IProducts = data.data ?? data;
-
-  if (!product || !product.id || !Array.isArray(product.markets)) {
-    notFound();
-  }
+export default function ProductDetailPage({ params }: PageProps) {
   return (
     <main className="p-8">
-       <ProductDetails product={product} />;
+      <Suspense
+        fallback={
+          <div className="py-16 text-center text-gray-500">
+            Loading product details...
+          </div>
+        }
+      >
+        <ProductDetailContent params={params} />
+      </Suspense>
     </main>
   );
 }
