@@ -26,34 +26,39 @@ const ProductsPage = async () => {
         ? result.products
         : [];
 
-  // Calculate each product's price change.
-  const withChange = products.map((product) => ({
-    ...product,
-    change:
+  // Calculate price change while preserving the IProducts type
+  const withChange: IProducts[] = products.map((product) => {
+    const pct =
       typeof product.today === "number" &&
       typeof product.yesterday === "number" &&
       product.yesterday !== 0
         ? ((product.today - product.yesterday) /
             product.yesterday) *
           100
-        : 0,
-  }));
+        : 0;
 
-  // Products whose prices increased.
+    return {
+      ...product,
+      change: {
+        dir: pct > 0 ? "up" : pct < 0 ? "down" : "same",
+        pct,
+      },
+    };
+  });
   const increased = withChange
-    .filter((product) => product.change > 0)
-    .sort((a, b) => b.change - a.change)
+    .filter((product) => product.change.pct > 0)
+    .sort((a, b) => b.change.pct - a.change.pct)
     .slice(0, 6);
 
-  // Products whose prices did not increase.
+  // Products whose prices decreased or stayed the same
   const notIncreased = withChange
-    .filter((product) => product.change <= 0)
-    .sort((a, b) => a.change - b.change)
+    .filter((product) => product.change.pct <= 0)
+    .sort((a, b) => a.change.pct - b.change.pct)
     .slice(0, 6);
 
   return (
     <main className="container mx-auto space-y-10 px-4 py-8 sm:px-6 lg:px-8">
-      {/* Prices increased */}
+ 
       <section>
         <h2 className="mb-5 text-xl font-bold text-slate-900 sm:text-2xl">
           <span className="mr-2 text-rose-600">▲</span>

@@ -1,5 +1,6 @@
 import CategoryProducts from "@/components/CategoryProductCard";
 import type { IProducts } from "@/types/products";
+import { Suspense } from "react";
 
 
 
@@ -36,8 +37,15 @@ const CategoryPage = async ({
       <h1 className="mb-6 text-2xl font-bold text-gray-900">
         {products[0]?.categoryNameBn ?? "ক্যাটাগরির পণ্য"}
       </h1>
-      
-      <CategoryProducts products={products} />
+      <Suspense
+        fallback={
+          <div className="py-16 text-center text-gray-500">
+            Loading category products...
+          </div>
+        }
+      >
+        <CategoryProducts products={products} />
+      </Suspense>
     </main>
   );
 };
